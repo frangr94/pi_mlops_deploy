@@ -13,7 +13,7 @@ app = FastAPI()
 df = pd.read_csv('data_api.csv')
 df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
 
-df_mod = pd.read_csv('data_modelado.csv')
+df_mod = pd.read_csv('data_modelado_cos_sim.csv')
 df_mod.set_index('title',inplace=True)
 df_mod.dropna(inplace=True)
 
