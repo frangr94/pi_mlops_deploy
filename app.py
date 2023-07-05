@@ -107,7 +107,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 def recommendations_cosine_sim(title):
     df_f=df_mod
     release_year = df_f.loc[title, 'release_year']
-    df_f = df_f[df_f['release_year'].between(release_year - 5, release_year + 5)]
+    df_f = df_f[df_f['release_year'].between(release_year - 4, release_year + 4)]
 
     count = CountVectorizer(dtype=np.int8,max_features=30)
     count_matrix = count.fit_transform(df_f['soup'])
