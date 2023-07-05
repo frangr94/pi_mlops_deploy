@@ -10,7 +10,7 @@ pydantic
 python-dateutil
 pytz
 scikit-learn
-scipy=
+scipy
 six
 sniffio
 starlette
