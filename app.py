@@ -24,7 +24,7 @@ def read_root():
 
 
 # devuelve la cantidad de peliculas producidas en x idioma
-@app.get('/count_lang')
+@app.get('/count_lang/{Idioma}')
 def peliculas_idioma(Idioma: str):
 
     count=0
@@ -37,7 +37,7 @@ def peliculas_idioma(Idioma: str):
     return respuesta
 
 # devuelve duracion y año de una pelicula
-@app.get('/duracion_pelicula')
+@app.get('/duracion_pelicula/{Pelicula}')
 def get_duracion(Pelicula: str):
 
     row = df[df['original_title'].str.contains(Pelicula)]
@@ -52,7 +52,7 @@ def get_duracion(Pelicula: str):
     return respuesta
 
 # devuelve cantidad de peliculas, ganancias totales y promedio
-@app.get('/franquicia')
+@app.get('/franquicia/{Franquicia}')
 def franquicia(Franquicia: str):
 
     rows=df.loc[df.collection_unn==Franquicia]
@@ -77,7 +77,7 @@ def peliculas_pais( Pais: str ):
     return respuesta
 
 # devuelve el revenue total y cantidad de peliculas realizadas
-@app.get('/productoras')
+@app.get('/productoras/{Productora}')
 def productoras_exitosas( Productora: str ):
     rows = df.loc[df.prod_companies.str.contains(Productora)]
     cantidad_peliculas = len(rows)
@@ -87,7 +87,7 @@ def productoras_exitosas( Productora: str ):
     return respuesta
 
 # devuelve el exito de un director, junto a una lista de peliculas con estadisticas
-@app.get('/directores')
+@app.get('/directores/{nombre_director}')
 def get_director(nombre_director: str):
     rows = df.loc[df.directors.str.contains(nombre_director)]
     ingresos = rows['revenue'].sum()
@@ -103,7 +103,7 @@ def get_director(nombre_director: str):
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 # modelo de recomendacion
-@app.get('/recomendador')
+@app.get('/recomendador/{title}')
 def recommendations_cosine_sim(title):
     df_f=df_mod
     release_year = df_f.loc[title, 'release_year']
