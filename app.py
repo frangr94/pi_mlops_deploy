@@ -103,7 +103,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 # modelo de recomendacion
 @app.get('/recomendador')
-def recommendations(title):
+def recommendations_cosine_sim(title):
     df_f=df_mod
     release_year = df_f.loc[title, 'release_year']
     df_f = df_f[df_f['release_year'].between(release_year - 2, release_year + 2)]
