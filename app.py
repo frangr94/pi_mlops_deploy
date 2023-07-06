@@ -65,7 +65,7 @@ def franquicia(Franquicia: str):
     return respuesta
 
 # devuelve la cantidad de peliculas producidas en un pais
-@app.get('/count_pais')
+@app.get('/count_pais/{Pais}')
 def peliculas_pais( Pais: str ):
     count = 0
     for i in df.prod_countries_unn:
