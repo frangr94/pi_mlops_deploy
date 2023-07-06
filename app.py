@@ -117,8 +117,10 @@ def recommendations_cosine_sim(title):
     idx = indexes[indexes == title].index[0]
     score_series = pd.Series(cosine_sim[idx]).sort_values(ascending=False)
     top_5_indexes = list(score_series.iloc[1:6].index)
-
+    cosine_sim=0
+    score_series=0
     for i in top_5_indexes:
         recommended.append(indexes[i])
+    top_5_indexes=0
 
     return recommended
