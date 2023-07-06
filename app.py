@@ -5,13 +5,11 @@ from typing import Text,Optional
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from scipy.sparse import csr_matrix
 
 app = FastAPI()
 
 
 df = pd.read_csv('data_api.csv')
-df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
 
 df_mod = pd.read_csv('data_modelado_cos_sim.csv')
 df_mod.set_index('title',inplace=True)
@@ -107,13 +105,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 def recommendations_cosine_sim(title):
     df_f=df_mod
     release_year = df_f.loc[title, 'release_year']
-    df_f = df_f[df_f['release_year'].between(release_year - 3, release_year + 3)]
+    df_f = df_f[df_f['release_year'].between(release_year - 2, release_year + 2)]
 
     count = CountVectorizer(dtype=np.int8,max_features=30)
     count_matrix = count.fit_transform(df_f['soup'])
     indexes = pd.Series(df_f.index)
-
-    count_matrix=csr_matrix(count_matrix)
 
     cosine_sim = cosine_similarity(count_matrix)
 
