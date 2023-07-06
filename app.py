@@ -14,7 +14,7 @@ df = pd.read_csv('data_api.csv')
 df_mod = pd.read_csv('data_modelado_cos_sim.csv')
 df_mod.set_index('title',inplace=True)
 df_mod.dropna(inplace=True)
-
+df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
 
 @app.get('/')
 def read_root():
