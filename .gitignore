@@ -5,3 +5,6 @@ prueba_knn.ipynb
 available_titles.csv
 transformaciones.ipynb
 ingesta_cos_sim.ipynb
+eda.ipynb
+knn_titles.csv
+prueba_collaborative.ipynb
