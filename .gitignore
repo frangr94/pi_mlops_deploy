@@ -2,3 +2,6 @@ cos_sim_pruebas.ipynb
 ingesta_knn.ipynb
 data_modelado_knn.csv
 prueba_knn.ipynb
+available_titles.csv
+transformaciones.ipynb
+ingesta_cos_sim.ipynb
