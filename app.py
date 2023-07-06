@@ -115,7 +115,7 @@ def recommendations_cosine_sim(title):
 
     count_matrix=csr_matrix(count_matrix)
 
-    cosine_sim = cosine_similarity(count_matrix, count_matrix)
+    cosine_sim = cosine_similarity(count_matrix)
 
     recommended = []
     idx = indexes[indexes == title].index[0]
