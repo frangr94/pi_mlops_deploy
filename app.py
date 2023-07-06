@@ -88,14 +88,14 @@ def productoras_exitosas( Productora: str ):
 @app.get('/directores/{nombre_director}')
 def get_director(nombre_director: str):
     rows = df.loc[df.directors.str.contains(nombre_director)]
-    ingresos = rows['revenue'].sum()
+    ingresos = np.average(rows['return'])
     values=['original_title','release_date','revenue','budget','return']
     peliculas=[]
     for index, row in rows.iterrows():
         z=row[['original_title','release_date','revenue','budget','return']]
         peliculas.append(list(z.values))
 
-    resultado='el director {} ha tenido un revenue de {}'.format(nombre_director,ingresos)
+    resultado='el director {} ha tenido un return promedio de {}'.format(nombre_director,ingresos)
     return resultado,peliculas
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -124,5 +124,3 @@ def recommendations_cosine_sim(title):
     top_5_indexes=0
 
     return recommended
-
-# esto es un cambio, guartdalaoasdñlkad{ñlakdñlasdkasdasd}
