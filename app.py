@@ -130,14 +130,14 @@ def recommendations_cosine_sim(title):
 
 
 # vecinos recomendacion
-df = pd.read_csv('data_modelado_knn.csv')
+df_r = pd.read_csv('data_modelado_knn.csv')
 
 # tomar titulos como indice
-df.replace(np.nan,0,inplace=True)
-df.genres_unn.replace(0,'none',inplace=True)
-indexes = df.title
+df_r.replace(np.nan,0,inplace=True)
+df_r.genres_unn.replace(0,'none',inplace=True)
+indexes = df_r.title
 # voy a probar quedarme solo con tres columnas para ohe
-df.drop(columns=['title','langs_unn'],inplace=True)
+df_r.drop(columns=['title','langs_unn'],inplace=True)
 
 from sklearn.preprocessing import OneHotEncoder
 
@@ -147,11 +147,11 @@ numerical=['budget','popularity','revenue','runtime','vote_average']
 categorical=['genres_unn','cast_unn','prod_companies','prod_countries_unn','directors']
 
 data=[]
-for i in df:
+for i in df_r:
     if i in numerical:
-        data.append(np.array(df[[i]]).reshape(-1,1))
+        data.append(np.array(df_r[[i]]).reshape(-1,1))
     elif i in categorical:
-        data.append(ohe.fit_transform(df[[i]]).toarray())
+        data.append(ohe.fit_transform(df_r[[i]]).toarray())
     else:
         continue
 
