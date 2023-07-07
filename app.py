@@ -11,11 +11,6 @@ app = FastAPI()
 
 df = pd.read_csv('data_api.csv')
 
-'''
-df_mod = pd.read_csv('data_modelado_cos_sim.csv')
-df_mod.set_index('title',inplace=True)
-df_mod.dropna(inplace=True)
-'''
 df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
 
 @app.get('/')
@@ -31,8 +26,7 @@ def peliculas_idioma(Idioma: str):
     for i in df.langs_unn:
         if Idioma in i:
             count+=1
-    
-    #respuesta = "{} peliculas producidas en: {}".format(count,Idioma)
+
     respuesta=[{'idioma':Idioma,'cantidad':count}]
 
     return respuesta
@@ -49,7 +43,7 @@ def get_duracion(Pelicula: str):
         duracion='no-data'
 
     respuesta='la pelicula {} dura {} minutos y fue estrenada en {}'.format(nombre,duracion,año)
-    #respuesta=[{'title':nombre,'duracion':duracion,'year':año}]
+
     
     return respuesta
 
@@ -62,7 +56,7 @@ def franquicia(Franquicia: str):
     ganancia_total = rows['revenue'].sum()
     ganancia_promedio = ganancia_total/cantidad_peliculas
 
-    #respuesta='la franquicia {} ha producido {} peliculas, con una ganancia total de {} y una ganancia promedio de {}'.format(Franquicia,cantidad_peliculas,ganancia_total,ganancia_promedio)
+    
     respuesta=[{'franquicia':Franquicia,'producciones':cantidad_peliculas,'ganancia_total':ganancia_total,'ganancia_promedio':ganancia_promedio}]
 
     return respuesta
@@ -75,7 +69,6 @@ def peliculas_pais( Pais: str ):
         if Pais in i:
             count+=1
     
-    #respuesta ='se produjeron {} peliculas en el pais {}'.format(count,Pais)
     respuesta=[{'pais':Pais,'cantidad':count}]
 
     return respuesta
@@ -87,7 +80,6 @@ def productoras_exitosas( Productora: str ):
     cantidad_peliculas = len(rows)
     ingresos = rows['revenue'].sum()
 
-    #respuesta='la productora {} produjo {} peliculas, con un revenue total de {}'.format(Productora,cantidad_peliculas,ingresos)
     respuesta=[{'productora':Productora,'cantidad_peliculas':cantidad_peliculas,'ingresos':ingresos}]
     return respuesta
 
@@ -105,36 +97,6 @@ def get_director(nombre_director: str):
 
     resultado={'director':nombre_director,'ingresos':ingresos}
     return resultado,peliculas
-
-'''
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-# modelo de recomendacion
-@app.get('/recomendador/{title}')
-def recommendations_cosine_sim(title):
-    df_f=df_mod
-    release_year = df_f.loc[title, 'release_year']
-    df_f = df_f[df_f['release_year'].between(release_year - 5, release_year + 5)]
-
-    count = CountVectorizer(dtype=np.int8,max_features=30)
-    count_matrix = count.fit_transform(df_f['soup'])
-    indexes = pd.Series(df_f.index)
-
-    cosine_sim = cosine_similarity(count_matrix)
-
-    recommended = []
-    idx = indexes[indexes == title].index[0]
-    score_series = pd.Series(cosine_sim[idx]).sort_values(ascending=False)
-    top_5_indexes = list(score_series.iloc[1:6].index)
-    cosine_sim=0
-    score_series=0
-    for i in top_5_indexes:
-        recommended.append(indexes[i])
-    top_5_indexes=0
-
-    return recommended
-'''
-
 
 # vecinos recomendacion
 df_r = pd.read_csv('data_modelado_nn.csv')
