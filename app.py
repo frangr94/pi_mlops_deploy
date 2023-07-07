@@ -97,7 +97,7 @@ def get_director(nombre_director: str):
 
     resultado='el director {} ha tenido un return promedio de {}'.format(nombre_director,ingresos)
     return resultado,peliculas
-
+'''
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 # modelo de recomendacion
@@ -124,3 +124,54 @@ def recommendations_cosine_sim(title):
     top_5_indexes=0
 
     return recommended
+'''
+
+
+# vecinos recomendacion
+df = pd.read_csv('data_modelado_knn.csv')
+
+# tomar titulos como indice
+df.replace(np.nan,0,inplace=True)
+df.genres_unn.replace(0,'none',inplace=True)
+indexes = df.title
+# voy a probar quedarme solo con tres columnas para ohe
+df.drop(columns=['title','langs_unn'],inplace=True)
+
+from sklearn.preprocessing import OneHotEncoder
+
+ohe = OneHotEncoder()
+
+numerical=['budget','popularity','revenue','runtime','vote_average']
+categorical=['genres_unn','cast_unn','prod_companies','prod_countries_unn','directors']
+
+data=[]
+for i in df:
+    if i in numerical:
+        data.append(np.array(df[[i]]).reshape(-1,1))
+    elif i in categorical:
+        data.append(ohe.fit_transform(df[[i]]).toarray())
+    else:
+        continue
+
+X = np.hstack(data)
+
+from sklearn.neighbors import NearestNeighbors
+
+def recomendador(title: str):
+
+
+    reccomender = NearestNeighbors(n_neighbors=6, algorithm='auto')
+
+    reccomender.fit(X)
+
+    idx = indexes[indexes == title].index[0]
+
+    query_point = np.array([X[idx]])
+
+    distances,indices = reccomender.kneighbors(query_point)
+
+    resultado=[]
+    for i in indices:
+        resultado.append(indexes[i])
+    
+    return resultado
