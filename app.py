@@ -159,6 +159,7 @@ X = np.hstack(data)
 
 from sklearn.neighbors import NearestNeighbors
 
+@app.get('/recomendacion/{title}')
 def recomendador(title: str):
 
 
