@@ -59,7 +59,7 @@ def franquicia(Franquicia: str):
 
     rows=df.loc[df.collection_unn==Franquicia]
     cantidad_peliculas = len(rows)
-    ganancia_total = rows['return'].sum()
+    ganancia_total = rows['revenue'].sum()
     ganancia_promedio = ganancia_total/cantidad_peliculas
 
     #respuesta='la franquicia {} ha producido {} peliculas, con una ganancia total de {} y una ganancia promedio de {}'.format(Franquicia,cantidad_peliculas,ganancia_total,ganancia_promedio)
