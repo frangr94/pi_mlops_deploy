@@ -41,7 +41,7 @@ def peliculas_idioma(Idioma: str):
 @app.get('/duracion_pelicula/{Pelicula}')
 def get_duracion(Pelicula: str):
 
-    row = df[df['original_title'].str.contains(Pelicula)]
+    row = df[df['original_title'].str==Pelicula]
     nombre =row.original_title.values[0]
     año = row.release_year.values[0]
     duracion = row.runtime.values[0]
@@ -49,7 +49,7 @@ def get_duracion(Pelicula: str):
         duracion='[no-data]'
 
     #respuesta='la pelicula {} dura {} minutos y fue estrenada en {}'.format(nombre,duracion,año)
-    respuesta=[{'title':nombre,'duracion':duracion,'year':año}]
+    respuesta=[{'title':Pelicula,'duracion':duracion,'year':año}]
     
     return respuesta
 
