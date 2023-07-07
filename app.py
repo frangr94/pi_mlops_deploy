@@ -32,7 +32,8 @@ def peliculas_idioma(Idioma: str):
         if Idioma in i:
             count+=1
     
-    respuesta = "{} peliculas producidas en: {}".format(count,Idioma)
+    #respuesta = "{} peliculas producidas en: {}".format(count,Idioma)
+    respuesta=[{'idioma':Idioma,'cantidad':count}]
 
     return respuesta
 
@@ -47,7 +48,8 @@ def get_duracion(Pelicula: str):
     if duracion==0:
         duracion='[no-data]'
 
-    respuesta='la pelicula {} dura {} minutos y fue estrenada en {}'.format(nombre,duracion,año)
+    #respuesta='la pelicula {} dura {} minutos y fue estrenada en {}'.format(nombre,duracion,año)
+    respuesta=[{'title':Pelicula,'duracion':duracion,'year':año}]
     
     return respuesta
 
@@ -60,8 +62,9 @@ def franquicia(Franquicia: str):
     ganancia_total = rows['return'].sum()
     ganancia_promedio = ganancia_total/cantidad_peliculas
 
-    respuesta='la franquicia {} ha producido {} peliculas, con una ganancia total de {} y una ganancia promedio de {}'.format(Franquicia,cantidad_peliculas,ganancia_total,ganancia_promedio)
-    
+    #respuesta='la franquicia {} ha producido {} peliculas, con una ganancia total de {} y una ganancia promedio de {}'.format(Franquicia,cantidad_peliculas,ganancia_total,ganancia_promedio)
+    respuesta=[{'franquicia':Franquicia,'producciones':cantidad_peliculas,'ganancia_total':ganancia_total,'ganancia_promedio':ganancia_promedio}]
+
     return respuesta
 
 # devuelve la cantidad de peliculas producidas en un pais
@@ -72,7 +75,8 @@ def peliculas_pais( Pais: str ):
         if Pais in i:
             count+=1
     
-    respuesta ='se produjeron {} peliculas en el pais {}'.format(count,Pais)
+    #respuesta ='se produjeron {} peliculas en el pais {}'.format(count,Pais)
+    respuesta=[{'pais':Pais,'cantidad':count}]
 
     return respuesta
 
@@ -83,22 +87,25 @@ def productoras_exitosas( Productora: str ):
     cantidad_peliculas = len(rows)
     ingresos = rows['revenue'].sum()
 
-    respuesta='la productora {} produjo {} peliculas, con un revenue total de {}'.format(Productora,cantidad_peliculas,ingresos)
+    #respuesta='la productora {} produjo {} peliculas, con un revenue total de {}'.format(Productora,cantidad_peliculas,ingresos)
+    respuesta=[{'productora':Productora,'cantidad_peliculas':cantidad_peliculas,'ingresos':ingresos}]
     return respuesta
 
 # devuelve el exito de un director, junto a una lista de peliculas con estadisticas
 @app.get('/directores/{nombre_director}')
+
 def get_director(nombre_director: str):
     rows = df.loc[df.directors.str.contains(nombre_director)]
     ingresos = np.average(rows['return'])
     values=['original_title','release_date','revenue','budget','return']
     peliculas=[]
     for index, row in rows.iterrows():
-        z=row[['original_title','release_date','revenue','budget','return']]
-        peliculas.append(list(z.values))
+        v=row[values].to_dict()
+        peliculas.append(v)
 
-    resultado='el director {} ha tenido un return promedio de {}'.format(nombre_director,ingresos)
+    resultado={'director':nombre_director,'ingresos':ingresos}
     return resultado,peliculas
+
 '''
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -130,7 +137,7 @@ def recommendations_cosine_sim(title):
 
 
 # vecinos recomendacion
-df_r = pd.read_csv('data_modelado_knn.csv')
+df_r = pd.read_csv('data_modelado_nn.csv')
 
 # tomar titulos como indice
 df_r.replace(np.nan,0,inplace=True)
