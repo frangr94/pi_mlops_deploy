@@ -98,6 +98,7 @@ def get_director(nombre_director: str):
     resultado={'director':nombre_director,'ingresos':ingresos}
     return resultado,peliculas
 
+
 # vecinos recomendacion
 df_r = pd.read_csv('data_modelado_nn.csv')
 
@@ -105,7 +106,8 @@ df_r = pd.read_csv('data_modelado_nn.csv')
 df_r.replace(np.nan,0,inplace=True)
 df_r.genres_unn.replace(0,'none',inplace=True)
 indexes = df_r.title
-# voy a probar quedarme solo con tres columnas para ohe
+
+# voy a probar quedarme solo con tres columnas para ohe para no quedarme sin ram en Render
 df_r.drop(columns=['title','langs_unn'],inplace=True)
 
 from sklearn.preprocessing import OneHotEncoder
