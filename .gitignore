@@ -1,6 +1,5 @@
 cos_sim_pruebas.ipynb
 ingesta_knn.ipynb
-data_modelado_knn.csv
 prueba_knn.ipynb
 available_titles.csv
 transformaciones.ipynb
@@ -11,3 +10,4 @@ prueba_collaborative.ipynb
 cos_sim_titles.csv
 knn.py
 prueba.ipynb
+data_modelado_cos_sim.csv
