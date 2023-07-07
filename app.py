@@ -173,14 +173,10 @@ def recomendador(title: str):
 
     distances,indices = reccomender.kneighbors(query_point)
 
-    pelis=[]
-    for i in indices:
-        pelis.append(indexes[i])
-    
     resultado=[]
-    for i in pelis:
+    for i in indices:
         if i != title:
-            resultado.append(i)
-
+            resultado.append(indexes[i])
+            
     
     return resultado
