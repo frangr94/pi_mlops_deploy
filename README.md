@@ -11,7 +11,8 @@ data_modelado_nn: contiene datos modelados listos para ser consumidos por un mod
 
 Uso:
 Realizar deploy en render y acceder a la pagina de inicio seleccionada.
-Se puede ingresar a <url>https://movies-api-fyi9.onrender.com/docs</url> para ver las opciones de consulta.
+
+Se puede ingresar a <url>https://movies-api-fyi9.onrender.com/docs</url> para ver las opciones de consulta y usar la interfaz gráfica de FastAPI.
 
 /count_lang/{Idioma} --> devuelve la cantidad de peliculas producidas en un idioma: formato iso 639 (MAYÚSCULAS) <url>https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes</url>
 
