@@ -30,9 +30,9 @@ Se puede ingresar a <url>https://movies-api-fyi9.onrender.com/docs</url> para ve
 
 * /count_lang/{Idioma} --> devuelve la cantidad de peliculas producidas en un idioma: formato iso 639 (MAYÚSCULAS): <url>https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes</url>
 
-* /duracion_pelicula/{Pelicula} --> devuelve la duracion y el año de estreno: hay que dar un nombre exacto (EJ:The Lord of the Rings: The Fellowship of the Ring)
+* /duracion_pelicula/{Pelicula} --> devuelve la duracion y el año de estreno: hay que dar un nombre exacto (EJ: _The Lord of the Rings: The Fellowship of the Ring_)
 
-* /franquicia/{Franquicia} --> devuelve cantidad de peliculas, ganancias totales y promedio de una franquicia
+* /franquicia/{Franquicia} --> devuelve cantidad de peliculas, ganancias totales y promedio de una franquicia (EJ: _Toy Story Collection_)
 
 * /count_pais/{Pais} -->devuelve la cantidad de peliculas producidas en un pais: formato iso 3166 alpha 2: <url>https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements</url>
 
