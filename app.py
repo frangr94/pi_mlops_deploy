@@ -39,14 +39,10 @@ def get_duracion(Pelicula: str):
     nombre =row.original_title.values[0]
     año = row.release_year.values[0]
     duracion = row.runtime.values[0]
-    if duracion==0:
-        duracion='no-data'
 
     # respuesta='La pelicula {} dura {} minutos y fue estrenada en {}'.format(nombre,duracion,año)
 
-    respuesta=[{'title':(nombre),
-            'duracion':duracion,
-            'year':año}]
+    respuesta=[nombre,duracion,año]
 
     
     return respuesta
