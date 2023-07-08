@@ -9,7 +9,7 @@ import numpy as np
 app = FastAPI()
 
 
-df = pd.read_csv('data_api.csv')
+df = pd.read_csv('datasets/data_api.csv')
 
 df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
 
@@ -100,7 +100,7 @@ def get_director(nombre_director: str):
 
 
 # vecinos recomendacion
-df_r = pd.read_csv('data_modelado_nn.csv')
+df_r = pd.read_csv('datasets/data_modelado_nn.csv')
 
 # tomar titulos como indice
 df_r.replace(np.nan,0,inplace=True)
