@@ -15,7 +15,7 @@ df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar 
 
 @app.get('/')
 def read_root():
-    return 'Bienvenido a movies REST API \n Para obtener datos complete el URL o ingrese a /docs'
+    return 'Bienvenido a movies REST API. Para obtener datos complete el URL o ingrese a /docs'
 
 
 # devuelve la cantidad de peliculas producidas en x idioma
