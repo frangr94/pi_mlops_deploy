@@ -48,6 +48,7 @@ Se puede ingresar a <url>https://movies-api-fyi9.onrender.com/docs</url> para ve
 
 El proceso que se le aplico a los datos se puede resumir en cuatro partes:
 
+
 #### Transformacion primaria de los datos: 
 En esta primera etapa se ingestaron los datos "en crudo" (movies.csv/credits.csv) y se les aplicaron varias transformaciones:
 
@@ -76,6 +77,10 @@ En esta segunda etapa de transformación se procedio a preparar los datos para s
 
 #### Construcción de la API y sus funciones pertinentes:
 Por último, se construyó la API (FastAPI) con las funciones requeridas en el archivo app.py para ser desplegado en la versión gratuita de Render. También se realiza algo de preprocesamiento en la función recomendación ya que era necesario aplicar One Hot Encoding a las variables categóricas para luego sumarlas al array que alimenta al sistema. Cabe destacar que se experimentó con varios sistemas de recomendación, pero por una cuestion de recursos se optó por el presentado en este repositorio, ya que permitía utilizar la API en Render con el dataset completo sin crashear (los otros funcionaban de forma local, pero los 512mb de RAM que ofrece Render en su versión gratuita no fueron suficientes).
+
+#### Nota
+Los archivos (transformaciones.ipynb,EDA.ipynb,ingesta_nn.ipynb) se pueden ver en:
+<url>https://drive.google.com/drive/folders/1nAai3gaKSxLjAQ16Kzgz8esPDXPm9ZEI</url>
 
 ### Hacia el futuro
 La construcción de este proyecto presentó un desafío importante y fue clave para la integración de las herramientas vistas a lo largo de la etapa de bootcamp. En el futuro, espero embarcarme en data-aventuras aún más difíciles e incorporar nuevas herramientas que me permitan navegar el mundo de los datos y _El Código_.
