@@ -43,7 +43,7 @@ def get_duracion(Pelicula: str):
 
     # respuesta='La pelicula {} dura {} minutos y fue estrenada en {}'.format(nombre,duracion,año)
 
-    respuesta=[str(nombre),int(duracion),int(año)]
+    respuesta=[{'title':str(nombre),'runtime':int(duracion),'released':int(año)}]
 
     
     return respuesta
