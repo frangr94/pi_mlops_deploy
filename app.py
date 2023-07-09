@@ -118,6 +118,7 @@ ohe = OneHotEncoder()
 numerical=['budget','popularity','revenue','runtime','vote_average']
 categorical=['genres_unn','cast_unn','prod_companies','prod_countries_unn','directors']
 
+# crear arrays para el modelo
 data=[]
 for i in df_r:
     if i in numerical:
@@ -127,6 +128,7 @@ for i in df_r:
     else:
         continue
 
+# stackear arrays
 X = np.hstack(data)
 
 from sklearn.neighbors import NearestNeighbors
@@ -135,20 +137,20 @@ from sklearn.neighbors import NearestNeighbors
 def recomendador(title: str):
 
 
-    reccomender = NearestNeighbors(n_neighbors=6, algorithm='auto')
+    reccomender = NearestNeighbors(n_neighbors=6, algorithm='auto') # instanciar modelo
 
-    reccomender.fit(X)
+    reccomender.fit(X) # ajustar datos
 
-    idx = indexes[indexes == title].index[0]
+    idx = indexes[indexes == title].index[0] # recuperar indice
 
-    query_point = np.array([X[idx]])
+    query_point = np.array([X[idx]]) # tomar datos del indice requerido
 
-    distances,indices = reccomender.kneighbors(query_point)
+    distances,indices = reccomender.kneighbors(query_point) # unpack kneightbors
 
     resultado=[]
     for i in indices:
         if i != title:
-            resultado.append(indexes[i])
+            resultado.append(indexes[i]) # crear lista de resultados
             
     
     return resultado
