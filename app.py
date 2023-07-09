@@ -104,7 +104,7 @@ def get_director(nombre_director: str):
         v=row[values].to_dict()
         peliculas.append(v)
 
-    resultado={'director':nombre_director,'ingresos':ingresos}
+    resultado={'director':nombre_director,'return':ingresos}
     return resultado,peliculas
 
 
@@ -158,7 +158,7 @@ def recomendador(title: str):
     resultado=[]
     for i in indices:
         if i != title:
-            resultado.append(indexes[i]) # crear lista de resultados
+            resultado.append(indexes[i].values) # crear lista de resultados
             
     
     return resultado
