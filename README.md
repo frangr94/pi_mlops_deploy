@@ -1,5 +1,5 @@
 ![Alt text](https://assets.soyhenry.com/henry-landing/assets/Henry/logo.png)
-# Proyecto indivudual - ML OPS - MOVIES DATASET :movie_camera:
+# Proyecto indivudual - ML OPS - :video_camera: MOVIES DATASET :movie_camera:
 
 
 Este repositorio contiene los archivos necesarios para realizar un deploy de una FastAPI en Render capaz de devolver datos extraídos del dataset. Fue creado en el contexto de la cursada de la academia SoyHenry.
