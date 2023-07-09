@@ -12,3 +12,4 @@ knn.py
 prueba.ipynb
 data_modelado_cos_sim.csv
 EDA.ipynb
+pipe_nearest.pkl

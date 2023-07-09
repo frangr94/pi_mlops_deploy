@@ -15,7 +15,15 @@ df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar 
 
 @app.get('/')
 def read_root():
-    return 'Bienvenido a movies REST API. Para obtener datos complete el URL o ingrese a /docs'
+    return {'-':'Bienvenido a movies REST API. Para obtener datos complete el URL o ingrese a /docs',
+            '1':'/count_lang/en',
+            '2':'/duracion_pelicula/Toy Story',
+            '3':'franquicia/Toy Story Collection',
+            '4': '/count_pais/US',
+            '5':'productoras/Pixar Animation Studios',
+            '6':'directores/John Lasseter',
+            '7':'Toy Story'
+            }
 
 
 # devuelve la cantidad de peliculas producidas en x idioma
@@ -145,7 +153,7 @@ def recomendador(title: str):
 
     query_point = np.array([X[idx]]) # tomar datos del indice requerido
 
-    distances,indices = reccomender.kneighbors(query_point) # unpack kneightbors
+    distances,indices = reccomender.kneighbors(query_point) # unpack kneightbors, necesito distances porque devuelve dos valores
 
     resultado=[]
     for i in indices:
