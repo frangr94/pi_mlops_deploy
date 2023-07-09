@@ -15,14 +15,14 @@ df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar 
 
 @app.get('/')
 def read_root():
-    return {'-':'Bienvenido a movies REST API. Para obtener datos complete el URL o ingrese a /docs',
+    return {'0':'Bienvenido a movies REST API. Para obtener datos complete el URL o ingrese a /docs',
             '1':'/count_lang/en',
             '2':'/duracion_pelicula/Toy Story',
-            '3':'franquicia/Toy Story Collection',
+            '3':'/franquicia/Toy Story Collection',
             '4': '/count_pais/US',
-            '5':'productoras/Pixar Animation Studios',
-            '6':'directores/John Lasseter',
-            '7':'Toy Story'
+            '5':'/productoras/Pixar Animation Studios',
+            '6':'/directores/John Lasseter',
+            '7':'/recomendacion/Toy Story'
             }
 
 
