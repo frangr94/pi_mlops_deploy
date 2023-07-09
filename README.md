@@ -1,8 +1,8 @@
 ![Alt text](https://assets.soyhenry.com/henry-landing/assets/Henry/logo.png)
-# Proyecto indivudual - ML OPS
+# Proyecto indivudual - ML OPS - MOVIES DATASET :movie_camera:
 
 
-Este repositorio contiene los archivos necesarios para realizar un deploy de una FastAPI en Render. Fue creado en el contexto de la cursada de la academia SoyHenry.
+Este repositorio contiene los archivos necesarios para realizar un deploy de una FastAPI en Render capaz de devolver datos extraídos del dataset. Fue creado en el contexto de la cursada de la academia SoyHenry.
 
 El dataset con el que se trabajo fue movies dataset y contiene informacion sobre aproximadamente 45.000 obras fílmicas.
 La API es capaz de devolver datos puntuales sobre el dataset y, ademas, proveer una recomendacion de peliculas basada en la similaridad de los registros.
@@ -18,7 +18,17 @@ Los archivos provistos son:
 
 
 ### Instrucciones de uso:
-Realizar deploy en render y acceder a la pagina de inicio seleccionada:
+Realizar deploy en render: https://github.com/frangr94/pi_mlops_deploy.git
+
+* Build Command:
+
+    -pip install -r requirements.txt
+
+* Start Command:
+
+    uvicorn app:app --host 0.0.0.0 --port 1000
+
+Acceder a la pagina de inicio seleccionada:
 
 Se puede escribir a mano un url para obtener datos de la API
 
@@ -77,6 +87,19 @@ En esta segunda etapa de transformación se procedio a preparar los datos para s
 
 #### Construcción de la API y sus funciones pertinentes:
 Por último, se construyó la API (FastAPI) con las funciones requeridas en el archivo app.py para ser desplegado en la versión gratuita de Render. También se realiza algo de preprocesamiento en la función recomendación ya que era necesario aplicar One Hot Encoding a las variables categóricas para luego sumarlas al array que alimenta al sistema. Cabe destacar que se experimentó con varios sistemas de recomendación, pero por una cuestion de recursos se optó por el presentado en este repositorio, ya que permitía utilizar la API en Render con el dataset completo sin crashear (los otros funcionaban de forma local, pero los 512mb de RAM que ofrece Render en su versión gratuita no fueron suficientes).
+
+#### Software utilizado
+
+##### Transformación y modelado
+* Pandas: transformación de los datos
+* Numpy: trabajo con arrays
+* Sklearn: preprocesamiento y modelamiento
+* Matplotlib/seaborn: visualización
+
+##### Deploy
+* Fastapi:crear un servicio web que devuelva algunos de los datos
+* Uvicorn: lanzar la api
+* Render: deploy como servicio web
 
 #### Nota
 Los archivos (transformaciones.ipynb,EDA.ipynb,ingesta_nn.ipynb) se pueden ver en:
