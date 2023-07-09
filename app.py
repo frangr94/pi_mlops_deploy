@@ -11,7 +11,7 @@ app = FastAPI()
 
 df = pd.read_csv('datasets/data_api.csv')
 
-df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
+#df['prod_companies']=df.prod_companies.str.strip('''""''') # tuve que emparchar esto
 
 @app.get('/')
 def read_root():
