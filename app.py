@@ -1,7 +1,7 @@
 # iniciar con comando terminal : uvicorn app:app --reload
 from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import Text,Optional
+#from pydantic import BaseModel
+#from typing import Text,Optional
 from datetime import datetime
 import pandas as pd
 import numpy as np
