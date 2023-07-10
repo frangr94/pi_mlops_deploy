@@ -14,11 +14,11 @@ La API es capaz de devolver datos puntuales sobre el dataset y, ademas, proveer 
 
 * mvp_transformaciones.ipynb :closed_book: : contiene las transformaciones requeridas para el MVP.
 
-* /datasets/data_api.csv: :pencil: contiene los datos sobre los que se realizan las consultas.
+* /datasets/data_api.csv :pencil:: contiene los datos sobre los que se realizan las consultas.
 
-* /datasets/data_modelado_nn.csv: :pencil: contiene datos modelados listos para ser consumidos por un modelo de NearestNeighbors.
+* /datasets/data_modelado_nn.csv :pencil:: contiene datos modelados listos para ser consumidos por un modelo de NearestNeighbors.
 
-* requirements.txt: :scroll: : contiene las librerias que usará la aplicacion web de Render.
+* requirements.txt :scroll: : contiene las librerias que usará la aplicacion web de Render.
 
 #### Nota
 Los archivos no relacionados a la api (transformaciones.ipynb,EDA.ipynb,ingesta_nn.ipynb) se pueden ver en:
