@@ -4,8 +4,8 @@
 
 Este repositorio contiene los archivos necesarios para realizar un deploy de una FastAPI en Render capaz de devolver datos sobre películas.
 
-El dataset con el que se trabajo fue movies dataset y contiene informacion sobre aproximadamente 45.000 obras fílmicas.
-La API es capaz de devolver datos puntuales sobre el dataset y, ademas, proveer una recomendacion de peliculas basada en la similitud de los registros.
+El dataset con el que se trabajó fue movies dataset y contiene información sobre aproximadamente 45.000 obras fílmicas.
+La API es capaz de devolver datos puntuales sobre el dataset y, ademas, proveer una recomendación de peliculas basada en la similitud de los registros.
 
 
 #### Los archivos provistos en este son:
@@ -43,7 +43,7 @@ Los archivos no relacionados a la api (transformaciones.ipynb,EDA.ipynb,ingesta_
 
 2) Acceder a la pagina de inicio seleccionada:
 
-    La primera opción es intoducir un url a mano para obtener datos de la API:(EJ: <url>https://movies-api-fyi9.onrender.com/directores/James%20Cameron</url>):
+    La primera opción es introducir un url a mano para obtener datos de la API:(EJ: <url>https://movies-api-fyi9.onrender.com/directores/James%20Cameron</url>):
 
     * /count_lang/{Idioma} --> devuelve la cantidad de peliculas producidas en un idioma: formato iso 639 (MAYÚSCULAS): <url>https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes</url>
 
@@ -53,7 +53,7 @@ Los archivos no relacionados a la api (transformaciones.ipynb,EDA.ipynb,ingesta_
 
     * /count_pais/{Pais} -->devuelve la cantidad de peliculas producidas en un pais: formato iso 3166 alpha 2: <url>https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements</url>
 
-    * /productoras/{Productora} --> devuelve el revenue total y cantidad de peliculas realizadas (EJ: Pixar Animation Studios)
+    * /productoras/{Productora} --> devuelve el revenue total y cantidad de peliculas realizadas por una productora (EJ: Pixar Animation Studios)
 
     * /directores/{nombre_director} --> devuelve el exito de un director, junto a una lista de peliculas con estadisticas (EJ: James Cameron)
 
@@ -102,7 +102,9 @@ En esta segunda etapa de transformación se procedio a preparar los datos para s
 * Exportacion de resultados a data_modelado_nn.csv
 
 #### Construcción de la API y sus funciones pertinentes (app.py):
-Por último, se construyó la API (FastAPI) con las funciones requeridas en el archivo app.py para ser desplegado en la versión gratuita de Render. También se realizó algo de preprocesamiento en la función recomendación ya que era necesario aplicar One Hot Encoding a las variables categóricas para luego sumarlas al array que alimenta al sistema. Se experimentó con varios sistemas de recomendación, pero por una cuestion de recursos se optó por el presentado en este repositorio, ya que permitía utilizar la API en Render con el dataset completo.
+Por último, se construyó la API (con FastAPI) con las funciones requeridas en el archivo app.py para ser desplegado en la versión gratuita de Render. También se realizó algo de preprocesamiento en la función recomendación ya que era necesario aplicar One Hot Encoding a las variables categóricas para luego sumarlas al array que alimenta al sistema. 
+
+Se experimentó con varios sistemas de recomendación, pero por una cuestion de recursos se optó por el presentado en este repositorio. Si bien el otro modelo (que consistía en comparar distintos vectores construídos a partir de datos string mediante similitud del coseno) era bueno, excedía los recursos de Render por su alto consumo de memoria con datasets de ésta magnitud
 
 #### Software utilizado
 
@@ -113,9 +115,9 @@ Por último, se construyó la API (FastAPI) con las funciones requeridas en el a
 * Matplotlib/seaborn: visualización de datos
 
 ##### Deploy
-* FastAPI: crear un servicio web que devuelva algunos de los datos
-* Uvicorn: lanzar la api
-* Render: deploy como servicio web
+* FastAPI: crear un servicio web capaz proveer los datos.
+* Uvicorn: lanzar la api.
+* Render: deploy como servicio web.
 
 
 
