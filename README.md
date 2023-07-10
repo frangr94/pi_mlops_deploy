@@ -10,13 +10,15 @@ La API es capaz de devolver datos puntuales sobre el dataset y, ademas, proveer 
 
 #### Los archivos provistos en este son:
 
-* app.py: contiene la API en sí y las funciones pertinentes para poder realizar consultas.
+* app.py :snake: : contiene la API en sí y las funciones pertinentes para poder realizar consultas.
 
-* mvp_transformaciones: contiene las transformaciones requeridas para el MVP.
+* mvp_transformaciones.ipynb :closed_book: : contiene las transformaciones requeridas para el MVP.
 
-* /datasets/data_api.csv: contiene los datos sobre los que se realizan las consultas.
+* /datasets/data_api.csv: :pencil: contiene los datos sobre los que se realizan las consultas.
 
-* /datasets/data_modelado_nn.csv: contiene datos modelados listos para ser consumidos por un modelo de NearestNeighbors.
+* /datasets/data_modelado_nn.csv: :pencil: contiene datos modelados listos para ser consumidos por un modelo de NearestNeighbors.
+
+* requirements.txt: :scroll: : contiene las librerias que usará la aplicacion web de Render.
 
 #### Nota
 Los archivos no relacionados a la api (transformaciones.ipynb,EDA.ipynb,ingesta_nn.ipynb) se pueden ver en:
