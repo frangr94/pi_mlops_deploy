@@ -35,11 +35,11 @@ Los archivos no relacionados a la api (transformaciones.ipynb,EDA.ipynb,ingesta_
 
     * Build Command:
 
-        -pip install -r requirements.txt
+        > -pip install -r requirements.txt
 
     * Start Command:
 
-        uvicorn app:app --host 0.0.0.0 --port 1000
+        > -uvicorn app:app --host 0.0.0.0 --port 1000
 
 2) Acceder a la pagina de inicio seleccionada:
 
@@ -102,7 +102,7 @@ En esta segunda etapa de transformación se procedio a preparar los datos para s
 * Exportacion de resultados a data_modelado_nn.csv
 
 #### Construcción de la API y sus funciones pertinentes (app.py):
-Por último, se construyó la API (FastAPI) con las funciones requeridas en el archivo app.py para ser desplegado en la versión gratuita de Render. También se realizó algo de preprocesamiento en la función recomendación ya que era necesario aplicar One Hot Encoding a las variables categóricas para luego sumarlas al array que alimenta al sistema. Cabe destacar que se experimentó con varios sistemas de recomendación, pero por una cuestion de recursos se optó por el presentado en este repositorio, ya que permitía utilizar la API en Render con el dataset completo.
+Por último, se construyó la API (FastAPI) con las funciones requeridas en el archivo app.py para ser desplegado en la versión gratuita de Render. También se realizó algo de preprocesamiento en la función recomendación ya que era necesario aplicar One Hot Encoding a las variables categóricas para luego sumarlas al array que alimenta al sistema. Se experimentó con varios sistemas de recomendación, pero por una cuestion de recursos se optó por el presentado en este repositorio, ya que permitía utilizar la API en Render con el dataset completo.
 
 #### Software utilizado
 
@@ -122,7 +122,7 @@ Por último, se construyó la API (FastAPI) con las funciones requeridas en el a
 ### Hacia el futuro
 La construcción de este proyecto presentó un desafío importante y fue clave para la integración de las herramientas vistas a lo largo de la etapa de bootcamp. En el futuro, espero embarcarme en data-aventuras aún más difíciles e incorporar nuevas herramientas que me permitan navegar el mundo de los datos y _El Código_.
 
-¡ Muchas gracias por visitar mi repositorio ! :rocket:
+¡ Muchas gracias por visitar mi repositorio !
 
 frangr94
 
