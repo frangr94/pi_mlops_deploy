@@ -158,7 +158,7 @@ def recomendador(title: str):
     resultado=[]
     for i in indices:
         if i != title:
-            resultado.append(indexes[i].values) # crear lista de resultados
+            resultado.append(indexes[i]) # crear lista de resultados
             
     
     return resultado
