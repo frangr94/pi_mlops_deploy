@@ -154,7 +154,16 @@ def recomendador(title: str):
     query_point = np.array([X[idx]]) # tomar datos del indice requerido
 
     distances,indices = reccomender.kneighbors(query_point) # unpack kneightbors, necesito distances porque devuelve dos valores
+    
+    indices=indices.ravel()    
+    resultado=[]
+    for i in indices:
+        if i.any()!=idx:
+            resultado.append(indexes[i])
+    
 
+    return resultado
+'''
     resultado=[]
     for i in indices:
         if i != title:
@@ -162,3 +171,4 @@ def recomendador(title: str):
             
     
     return resultado
+'''
